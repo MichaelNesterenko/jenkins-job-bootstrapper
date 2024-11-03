@@ -1,0 +1,207 @@
+jenkins:
+  agentProtocols:
+  - "JNLP4-connect"
+  - "Ping"
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+  disableRememberMe: false
+  labelAtoms:
+  - name: "built-in"
+  markupFormatter: "plainText"
+  mode: NORMAL
+  myViewsTabBar: "standard"
+  nodeMonitors:
+  - "architecture"
+  - "clock"
+  - diskSpace:
+      freeSpaceThreshold: "1GiB"
+      freeSpaceWarningThreshold: "2GiB"
+  - "swapSpace"
+  - tmpSpace:
+      freeSpaceThreshold: "1GiB"
+      freeSpaceWarningThreshold: "2GiB"
+  - "responseTime"
+  numExecutors: 2
+  primaryView:
+    all:
+      name: "all"
+  projectNamingStrategy: "standard"
+  quietPeriod: 5
+  scmCheckoutRetryCount: 0
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+      - id: "admin"
+        name: "admin"
+        password: "admin"
+        properties:
+        - "apiToken"
+        - "userCommunityProperty"
+        - "consoleUrlProvider"
+        - "mailer"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "user"
+        - "theme"
+        - "timezone"
+        - "experimentalFlags"
+  slaveAgentPort: 50000
+  updateCenter:
+    sites:
+    - id: "default"
+      url: "https://updates.jenkins.io/update-center.json"
+  views:
+  - all:
+      name: "all"
+  viewsTabBar: "standard"
+globalCredentialsConfiguration:
+  configuration:
+    providerFilter: "none"
+    typeFilter: "none"
+appearance:
+  locale:
+    ignoreAcceptLanguage: false
+    systemLocale: "USE_BROWSER_LOCALE"
+  pipelineGraphView:
+    showGraphOnBuildPage: false
+    showGraphOnJobPage: false
+  prism:
+    theme: PRISM
+  themeManager:
+    disableUserThemes: false
+security:
+  apiToken:
+    creationOfLegacyTokenEnabled: false
+    tokenGenerationOnCreationEnabled: false
+    usageStatisticsEnabled: true
+  copyartifact:
+    mode: PRODUCTION
+  cps:
+    hideSandbox: true
+  gitHooks:
+    allowedOnAgents: false
+    allowedOnController: false
+  gitHostKeyVerificationConfiguration:
+    sshHostKeyVerificationStrategy: "knownHostsFileVerificationStrategy"
+  globalJobDslSecurityConfiguration:
+    useScriptSecurity: true
+  queueItemAuthenticator:
+    authenticators:
+    - project:
+        disabledStrategies:
+        - "org.jenkinsci.plugins.authorizeproject.strategy.SpecificUsersAuthorizationStrategy"
+        - "org.jenkinsci.plugins.authorizeproject.strategy.SystemAuthorizationStrategy"
+        enabledStrategies:
+        - "org.jenkinsci.plugins.authorizeproject.strategy.TriggeringUsersAuthorizationStrategy"
+        - "org.jenkinsci.plugins.authorizeproject.strategy.AnonymousAuthorizationStrategy"
+    - global:
+        strategy: "systemAuthorizationStrategy"
+  sSHD:
+    port: -1
+  scriptApproval:
+    forceSandbox: true
+unclassified:
+  buildDiscarders:
+    configuredBuildDiscarders:
+    - "jobBuildDiscarder"
+  buildStepOperation:
+    enabled: false
+  email-ext:
+    adminRequiredForTemplateTesting: false
+    allowUnregisteredEnabled: false
+    charset: "UTF-8"
+    debugMode: false
+    defaultBody: |-
+      $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+
+      Check console output at $BUILD_URL to view the results.
+    defaultSubject: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!"
+    defaultTriggerIds:
+    - "hudson.plugins.emailext.plugins.trigger.FailureTrigger"
+    maxAttachmentSize: -1
+    maxAttachmentSizeMb: -1
+    precedenceBulk: false
+    watchingEnabled: false
+  enrichedSummaryConfig:
+    enrichedSummaryEnabled: false
+    httpClientDelayBetweenRetriesInSeconds: 1
+    httpClientMaxRetries: 3
+    httpClientTimeoutInSeconds: 1
+  fingerprints:
+    fingerprintCleanupDisabled: false
+    storage: "file"
+  gitHubConfiguration:
+    apiRateLimitChecker: ThrottleForNormalize
+  gitHubPluginConfig:
+    hookUrl: "http://jenkins-job-bootstrapper:8080/github-webhook/"
+  gitLabConnectionConfig:
+    connections:
+    - clientBuilderId: "autodetect"
+      connectionTimeout: 10
+      ignoreCertificateErrors: false
+      readTimeout: 10
+    useAuthenticatedEndpoint: true
+  globalTimeOutConfiguration:
+    operations:
+    - "abortOperation"
+    overwriteable: false
+  injectionConfig:
+    allowUntrusted: false
+    checkForBuildAgentErrors: false
+    enabled: false
+    enforceUrl: false
+    injectCcudExtension: false
+    injectMavenExtension: false
+  junitTestResultStorage:
+    storage: "file"
+  location:
+    adminAddress: "address not configured yet <nobody@nowhere>"
+    url: "http://jenkins-job-bootstrapper:8080/"
+  mailer:
+    charset: "UTF-8"
+    useSsl: false
+    useTls: false
+  perforce:
+    lastSuccess: false
+  pollSCM:
+    pollingThreadCount: 10
+  scmGit:
+    addGitTagAction: false
+    allowSecondFetch: false
+    createAccountBasedOnEmail: false
+    disableGitToolChooser: false
+    hideCredentials: false
+    showEntireCommitSummaryInChanges: false
+    useExistingAccountWithSameEmail: false
+  subversionSCM:
+    workspaceFormat: 8
+  timestamper:
+    allPipelines: false
+    elapsedTimeFormat: "'<b>'HH:mm:ss.S'</b> '"
+    systemTimeFormat: "'<b>'HH:mm:ss'</b> '"
+  upstream:
+    globalUpstreamFilterStrategy: UseOldest
+  warningsParsers:
+    consoleLogScanningPermitted: false
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
+  mavenGlobalConfig:
+    globalSettingsProvider: "standard"
+    settingsProvider: "standard"
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - gitHubApp:
+          appID: "1044926"
+          description: "mn-jenkins-job-bootstrapper"
+          id: "githb-auth"
+          owner: "MichaelNesterenko"
+          privateKey: "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDGfHXXeUKXbKr7KHwoki6Tnd8UOnSKVjYhI1CE+Xq8ggxKQQQDny47oZtpdFGiEve63OVKwfzoIzEceGI216ZUHzCVviltqS/QZrRiE9K9yalyCXea8f+ytzmF6belnH6VkkQ3COdfHt35JpbspuZSmeJJMZ5Mo5g9Y508Sdz4WqPcEMR5jCsE8u2e2Mf/ZzVwD3D7d42gqWqEBdvnbHIGoJDEknwcsgZKKvii4TwYRqUfiQmX1Lx6RCSqBP4htbSqkxISsHyVg+o7+oQNRyQVOwY1hHJJMFtGpcf7MBpTKKyFTDD88UAKlGEq9FN+F0kHGdvECk06yICee4u49/0ZAgMBAAECggEAFj01uunUQ0EiuzdjCeyvGU0UBKE0E5frQrVBPVTyopJzrBIyz/ES7g2Ca0NkLiOv7Bj5+/FWU/A1fXojjv+EnGJOQEjpPWc6e0A2r9KGx0sEGEnlQ9AflTegU1fHgt/Q8xNLX1s5CVhdCKCBQozEu7aQOyE7Gl0uHpq9sFaaUp0qeJo7pAewRyxhfE69GbmBZV8Mqsu4J5T6jxKqxDW3mG82stqrT8ojYnq0waDE4QYbEg+AhBrkBk5ACugE5T+IA3vOLMP8EciRirv40mltJzWdbVAfP87rSoY0OQHqaIRSCbexiXnA7RCCMl0Wg/0bHnnEXa9/UxoZzIkeBebXDQKBgQD6pEeiWWgKAHH61J2+ELAcFk8YYifsbF7z2sH8EWUgUtpgONTdZKTeU4FUe8Fzpkb8UiXtvYa6nSOtHYe+7VGI5M/+Mn//3r5uhxqEmtk5i9IejRVEzPutsemhgLcIcfaoLaXDV4r6exOuxT+B+SmXdSWwu+hpuXt9+Le3FPncVwKBgQDKur3vCrlDQgyNYku5WP3m34Fzn4m/jz6AJGTTW/2iTO9A9srlpkFo7UgEJ31Eq30PDNFuNpLAu4tGhphgmB6t/F0vQh1IiCwKCstxrhs8aHjiiRupLpg1dkg9PJYG0B801e8KEjJ8aBecOpIZVarSh8cYeANQOOj90HC7eAAMDwKBgAV4DDAYr1J4jAQjG4YIKy+RtQwdKC3ad3/uqAjuADziUe2Dj/F8vrQzMkE7qg7x896RlE5JsmTkBOFEIbAi0YKhK4CqbWyR2anjvMpj7pV43Y7ZGTu1FVDG7wgdHOFMS0uEI3fNszSf9t/7YdVeMHAjmDzw/LNB3tXy1V9jT8hlAoGBAIOv+C6tzZgV8GdqwXudhhiReNpteKIZX2UHvwLYj5H83bFaXoP8kiKhd5VTPXj82FiNYAFyq7NMX/Uo+xRL3Cnyc2l+Td1OryS6zFqE2SZNSrEElRY5sR+RPO2iTGYSjSLaENN+7JKJX0TZewu/7R2imz6Wvrg+r4IoAwKTuZwbAoGAfwVHk8Zd0chqC2crasRnKrtTnOA3j+6CkcukT1ddtqkLHoFDc1kmYpyCD6jnOW8zTKimuJUCU9kJ3EuuBdy4DN49hil/sgbuxFfm/uqJUKpFkDHkl2bzB4EY7g+3rMHjGHviouD3CtSoLUe8hnrWNTQNZIbITa52mdDfGxasAAI="
